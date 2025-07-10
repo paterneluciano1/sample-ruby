@@ -6,14 +6,14 @@ class StaticPagesController < ApplicationController
 
     begin
       # Configuration de l'API FedaPay
-      FedaPay.api_key = 'sk_sandbox_XXXXXXXXXXXXX'
+      FedaPay.api_key = 'sk_sandbox_XXXXXXXXXXXXXXXXXXXX'
       FedaPay.environment = 'env' # 'sandbox' ou 'live' en production
   
       # Création de la transaction
       transaction = FedaPay::Transaction.create(
         amount: 100000,
         currency: { iso: 'XOF' },
-        callback_url: "http://localhost:3000/payment_status",
+        callback_url: "http://rubysample.fedapay.com/payment_status",
         description: 'Achat de montre de luxe',
       )
   
@@ -33,7 +33,7 @@ class StaticPagesController < ApplicationController
     rescue StandardError => e
       # Capture des erreurs générales
       puts "Standard Error: #{e.message}"
-      render json: { error: "Une erreur inattendue est survenue. Veuillez réessayer plus tard." }, status: :internal_server_error
+      render json: { error: "Unubysample.fedapay.come erreur inattendue est survenue. Veuillez réessayer plus tard." }, status: :internal_server_error
     end
   end
   
